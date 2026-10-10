@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio 43 · Salón de belleza en Puebla</title>
+  <meta name="description" content="Studio 43, salón de belleza en Puebla especializado en color, balayage, baby lights y cortes con asesoría. Agenda tu cita por WhatsApp.">
+  <meta name="theme-color" content="#f6efe6">
+  <link rel="icon" type="image/png" href="img/favicon-43.png">
+  <link rel="apple-touch-icon" href="img/favicon-43.png">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       VARIABLES DE DISEÑO
+       ========================================================= */
+    :root {
+      --crema: #f8f2ea;
+      --crema-2: #f1e7da;
+      --arena: #e4d3bd;
+      --arena-osc: #cdb594;
+      --miel: #b8894b;
+      --miel-claro: #d9b77e;
+      --espresso: #2e211a;
+      --cafe: #5a4436;
+      --texto: #3b2d25;
+      --texto-suave: #7a6656;
+      --blanco: #fffdfa;
+      --verde-ok: #4f7a52;
+      --rojo-off: #a65445;
+
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      --radio: 18px;
+      --radio-sm: 10px;
+      --sombra: 0 18px 40px -22px rgba(46, 33, 26, .35);
+      --sombra-sm: 0 6px 18px -10px rgba(46, 33, 26, .3);
+      --trans: .45s cubic-bezier(.2, .7, .2, 1);
+      --gutter: 20px;
+      --max: 1180px;
+      --nav-h: 64px;
+    }
+
+    /* =========================================================
+       BASE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--texto);
+      background: var(--crema);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--miel); outline-offset: 3px; border-radius: 4px; }
+
+    .contenedor { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .seccion { padding: 84px 0; scroll-margin-top: var(--nav-h); }
+    .seccion--arena { background: var(--crema-2); }
+    .seccion--oscura { background: var(--espresso); color: var(--crema); }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.08; margin: 0; color: var(--espresso); }
+    .seccion--oscura h2, .seccion--oscura h3 { color: var(--crema); }
+    h2 { font-size: clamp(2.2rem, 7vw, 3.4rem); }
+    h2 em, h1 em { font-style: italic; color: var(--miel); }
+    p { margin: 0 0 1em; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .74rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--miel); margin-bottom: 16px;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .encabezado { max-width: 640px; margin-bottom: 44px; }
+    .encabezado p { color: var(--texto-suave); margin-top: 16px; }
+    .seccion--oscura .encabezado p { color: var(--arena); }
+
+    /* Botones */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 50px; padding: 0 26px; border-radius: 999px; border: 1px solid transparent;
+      font-weight: 600; font-size: .95rem; letter-spacing: .02em; text-decoration: none; cursor: pointer;
+      transition: transform var(--trans), background var(--trans), color var(--trans), box-shadow var(--trans), border-color var(--trans);
+    }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+    .btn--primario { background: var(--espresso); color: var(--crema); }
+    .btn--primario:hover { background: var(--miel); transform: translateY(-2px); box-shadow: var(--sombra); }
+    .btn--miel { background: var(--miel); color: var(--blanco); }
+    .btn--miel:hover { background: var(--miel-claro); color: var(--espresso); transform: translateY(-2px); }
+    .btn--borde { border-color: var(--espresso); color: var(--espresso); background: transparent; }
+    .btn--borde:hover { background: var(--espresso); color: var(--crema); }
+    .btn--claro { border-color: var(--arena); color: var(--crema); }
+    .btn--claro:hover { background: var(--crema); color: var(--espresso); }
+
+    /* =========================================================
+       FRANJA DE DEMOSTRACIÓN
+       ========================================================= */
+    .franja-demo {
+      background: var(--espresso); color: var(--arena);
+      font-size: .74rem; text-align: center; padding: 8px var(--gutter); letter-spacing: .03em;
+    }
+    .franja-demo strong { color: var(--miel-claro); font-weight: 600; }
+
+    /* =========================================================
+       MENÚ
+       ========================================================= */
+    .nav {
+      position: sticky; top: 0; z-index: 50; height: var(--nav-h);
+      background: rgba(248, 242, 234, .86);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--trans), box-shadow var(--trans);
+    }
+    .nav.con-sombra { border-color: rgba(205, 181, 148, .45); box-shadow: 0 8px 24px -20px rgba(46, 33, 26, .5); }
+    .nav__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { text-decoration: none; display: flex; align-items: baseline; gap: 6px; line-height: 1; }
+    /* Logo oficial (PNG con fondo transparente, generado a partir del logo del salón) */
+    .logo img { height: 24px; width: auto; transition: opacity var(--trans); }
+    .logo:hover img { opacity: .8; }
+    .nav__links { display: none; }
+    .nav__cta { display: none; }
+
+    .hamburguesa {
+      width: 46px; height: 46px; border: 0; background: transparent; cursor: pointer;
+      display: grid; place-items: center; border-radius: 50%; margin-right: -10px;
+    }
+    .hamburguesa span, .hamburguesa span::before, .hamburguesa span::after {
+      display: block; width: 22px; height: 1.5px; background: var(--espresso); border-radius: 2px;
+      position: relative; transition: transform var(--trans), background var(--trans);
+    }
+    .hamburguesa span::before, .hamburguesa span::after { content: ""; position: absolute; left: 0; }
+    .hamburguesa span::before { top: -7px; }
+    .hamburguesa span::after { top: 7px; }
+    .hamburguesa[aria-expanded="true"] span { background: transparent; }
+    .hamburguesa[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+    .hamburguesa[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Menú móvil desplegable */
+    .menu-movil {
+      position: fixed; inset: var(--nav-h) 0 0 0; z-index: 49;
+      background: var(--crema); padding: 28px var(--gutter) 40px;
+      display: flex; flex-direction: column; gap: 4px;
+      opacity: 0; visibility: hidden; transform: translateY(-10px);
+      transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
+      overflow-y: auto;
+    }
+    .menu-movil.abierto { opacity: 1; visibility: visible; transform: none; }
+    .menu-movil a:not(.btn) {
+      font-family: var(--serif); font-size: 2rem; text-decoration: none; color: var(--espresso);
+      padding: 8px 0; border-bottom: 1px solid var(--arena);
+    }
+    .menu-movil .btn { margin-top: 24px; }
+    body.sin-scroll { overflow: hidden; }
+
+    /* =========================================================
+       PORTADA
+       ========================================================= */
+    .hero { position: relative; padding: 40px 0 72px; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+      right: -260px; top: -120px;
+      background: radial-gradient(circle, rgba(217, 183, 126, .35), transparent 65%);
+      pointer-events: none;
+    }
+    .hero__grid { display: grid; gap: 40px; position: relative; }
+    .hero__chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+      background: var(--blanco); border: 1px solid var(--arena); font-size: .8rem; font-weight: 500;
+      text-decoration: none; color: var(--texto);
+    }
+    .chip .estrellas { color: var(--miel); letter-spacing: 1px; }
+    .estado-punto { width: 8px; height: 8px; border-radius: 50%; background: var(--texto-suave); flex: none; }
+    .estado--abierto .estado-punto { background: var(--verde-ok); box-shadow: 0 0 0 4px rgba(79, 122, 82, .18); animation: latido 2s infinite; }
+    .estado--cerrado .estado-punto { background: var(--rojo-off); }
+    @keyframes latido { 50% { box-shadow: 0 0 0 7px rgba(79, 122, 82, 0); } }
+
+    .hero h1 { font-size: clamp(2.9rem, 12vw, 5.4rem); letter-spacing: -.01em; }
+    .hero h1 em { display: inline; }
+    .hero__texto { font-size: 1.06rem; color: var(--texto-suave); max-width: 520px; margin: 22px 0 30px; }
+    .hero__acciones { display: flex; flex-direction: column; gap: 12px; }
+
+    .hero__visual { position: relative; aspect-ratio: 4 / 5; max-height: 560px; }
+    .hero__arco {
+      position: absolute; inset: 0 8% 0 0; border-radius: 999px 999px var(--radio) var(--radio);
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 240, 210, .9), transparent 55%),
+        linear-gradient(160deg, #e9cf9f 0%, #c99a5b 38%, #8a5c36 72%, #4a3123 100%);
+      box-shadow: var(--sombra); overflow: hidden;
+    }
+    /* Ondas decorativas que evocan mechas de cabello */
+    .hero__arco::after {
+      content: ""; position: absolute; inset: -20%;
+      background: repeating-linear-gradient(115deg, rgba(255, 255, 255, .0) 0 18px, rgba(255, 244, 222, .16) 18px 22px);
+      filter: blur(2px);
+    }
+    .hero__tarjeta {
+      position: absolute; right: 0; bottom: 12%; z-index: 3;
+      background: var(--blanco); border-radius: var(--radio); padding: 16px 18px; box-shadow: var(--sombra);
+      max-width: 210px;
+    }
+    .hero__tarjeta strong { font-family: var(--serif); font-size: 2.2rem; font-weight: 500; color: var(--espresso); line-height: 1; display: block; }
+    .hero__tarjeta span { font-size: .78rem; color: var(--texto-suave); display: block; margin-top: 4px; }
+    .hero__tarjeta .estrellas { color: var(--miel); letter-spacing: 2px; font-size: .9rem; }
+
+    /* =========================================================
+       SOBRE NOSOTRAS
+       ========================================================= */
+    .sobre__grid { display: grid; gap: 44px; }
+    .sobre__visual { position: relative; }
+    .sobre__img {
+      aspect-ratio: 4 / 5; border-radius: var(--radio);
+      background: linear-gradient(200deg, #f3e2c7, #d6b384 45%, #9b7048);
+      position: relative; overflow: hidden;
+    }
+    .sobre__cita {
+      position: relative; margin: -60px 16px 0 auto; max-width: 300px;
+      background: var(--espresso); color: var(--crema); padding: 22px 24px; border-radius: var(--radio);
+      font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.35; box-shadow: var(--sombra);
+    }
+    .sobre__cita small { display: block; margin-top: 10px; font-family: var(--sans); font-style: normal; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--miel-claro); }
+    .pilares { display: grid; gap: 18px; margin-top: 30px; }
+    .pilar { display: flex; gap: 16px; align-items: flex-start; }
+    .pilar__icono {
+      width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center;
+      background: var(--crema-2); color: var(--miel); border: 1px solid var(--arena);
+    }
+    .pilar__icono svg { width: 22px; height: 22px; }
+    .pilar h3 { font-size: 1.4rem; margin-bottom: 4px; }
+    .pilar p { margin: 0; color: var(--texto-suave); font-size: .95rem; }
+
+    /* =========================================================
+       SERVICIOS
+       ========================================================= */
+    .filtros {
+      display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 12px; margin: 0 calc(var(--gutter) * -1) 26px;
+      padding-left: var(--gutter); padding-right: var(--gutter); scrollbar-width: none;
+    }
+    .filtros::-webkit-scrollbar { display: none; }
+    .filtro {
+      flex: none; min-height: 44px; padding: 0 20px; border-radius: 999px; cursor: pointer;
+      border: 1px solid var(--arena-osc); background: transparent; font-size: .9rem; font-weight: 500;
+      transition: background var(--trans), color var(--trans), border-color var(--trans);
+    }
+    .filtro:hover { border-color: var(--espresso); }
+    .filtro[aria-pressed="true"] { background: var(--espresso); border-color: var(--espresso); color: var(--crema); }
+
+    .servicios { display: grid; gap: 16px; }
+    .servicio {
+      background: var(--blanco); border: 1px solid rgba(205, 181, 148, .5); border-radius: var(--radio);
+      padding: 24px; display: flex; flex-direction: column; gap: 10px;
+      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans), opacity .3s;
+    }
+    .servicio:hover { transform: translateY(-4px); box-shadow: var(--sombra); border-color: var(--miel-claro); }
+    .servicio[hidden] { display: none; }
+    .servicio.aparece { animation: aparece .45s both; }
+    @keyframes aparece { from { opacity: 0; transform: translateY(12px); } }
+    .servicio__cat { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--miel); font-weight: 600; }
+    .servicio h3 { font-size: 1.65rem; }
+    .servicio p { margin: 0; color: var(--texto-suave); font-size: .94rem; flex: 1; }
+    .servicio__pie { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: 8px; padding-top: 16px; border-top: 1px dashed var(--arena); }
+    .precio { font-family: var(--serif); font-size: 1.5rem; color: var(--espresso); line-height: 1.1; }
+    .precio small { display: block; font-family: var(--sans); font-size: .72rem; color: var(--texto-suave); letter-spacing: .04em; }
+    .precio--consultar { font-size: 1.15rem; font-style: italic; }
+    .btn-reservar {
+      flex: none; min-height: 42px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--espresso);
+      background: transparent; cursor: pointer; font-weight: 600; font-size: .85rem;
+      transition: background var(--trans), color var(--trans);
+    }
+    .btn-reservar:hover { background: var(--espresso); color: var(--crema); }
+    .nota-precios { margin-top: 28px; font-size: .84rem; color: var(--texto-suave); max-width: 720px; }
+    .nota-precios strong { color: var(--cafe); }
+    .tambien { margin-top: 18px; font-size: .9rem; color: var(--cafe); }
+
+    /* =========================================================
+       CÓMO TRABAJAMOS
+       ========================================================= */
+    .pasos { display: grid; gap: 14px; counter-reset: paso; list-style: none; padding: 0; margin: 0; }
+    .paso {
+      position: relative; padding: 26px 24px 24px 24px; border-radius: var(--radio);
+      background: rgba(255, 253, 250, .05); border: 1px solid rgba(228, 211, 189, .18);
+      transition: background var(--trans), border-color var(--trans);
+    }
+    .paso:hover { background: rgba(255, 253, 250, .09); border-color: rgba(217, 183, 126, .5); }
+    .paso::before {
+      counter-increment: paso; content: "0" counter(paso);
+      font-family: var(--serif); font-style: italic; font-size: 2.8rem; color: var(--miel-claro); line-height: 1;
+      display: block; margin-bottom: 14px;
+    }
+    .paso h3 { font-size: 1.5rem; margin-bottom: 6px; }
+    .paso p { margin: 0; color: var(--arena); font-size: .94rem; }
+
+    /* =========================================================
+       GALERÍA
+       ========================================================= */
+    .galeria { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 10px; }
+    .foto {
+      position: relative; border-radius: var(--radio-sm); overflow: hidden; margin: 0;
+      background: var(--g, linear-gradient(160deg, #ead3ad, #b88a55));
+    }
+    .foto::before {
+      content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(120deg, transparent 0 22px, rgba(255, 246, 230, .12) 22px 25px);
+      transition: transform 1.2s ease;
+    }
+    .foto:hover::before { transform: scale(1.15) translateX(10px); }
+    .foto figcaption {
+      position: absolute; left: 12px; bottom: 10px; right: 12px; z-index: 1;
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 253, 250, .92);
+      text-shadow: 0 1px 6px rgba(46, 33, 26, .35);
+    }
+    /* Fotos reales: sin las rayas decorativas y con zoom suave al pasar el mouse */
+    .foto--real::before { content: none; }
+    .foto--real img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
+    .foto--real:hover img { transform: scale(1.05); }
+    .foto--real::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(46, 33, 26, .55)); pointer-events: none; }
+    .foto--alta { grid-row: span 2; }
+    .foto--ancha { grid-column: span 2; }
+    .aviso-fotos {
+      display: flex; gap: 12px; align-items: center; margin-top: 18px; padding: 14px 16px;
+      border: 1px dashed var(--arena-osc); border-radius: var(--radio-sm); font-size: .86rem; color: var(--cafe);
+    }
+    .aviso-fotos svg { width: 22px; height: 22px; flex: none; color: var(--miel); }
+
+    /* =========================================================
+       OPINIONES
+       ========================================================= */
+    .opiniones__grid { display: grid; gap: 36px; }
+    .calif { text-align: left; }
+    .calif__num { font-family: var(--serif); font-size: 6rem; line-height: .9; color: var(--espresso); }
+    .calif__estrellas { color: var(--miel); font-size: 1.4rem; letter-spacing: 4px; margin: 8px 0 4px; }
+    .calif p { color: var(--texto-suave); font-size: .92rem; }
+
+    .carrusel { position: relative; min-width: 0; }
+    .carrusel__ventana { overflow: hidden; border-radius: var(--radio); touch-action: pan-y; }
+    .carrusel__pista { display: flex; transition: transform .7s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+    .resena {
+      flex: 0 0 100%; min-width: 0; margin: 0; background: var(--blanco); border: 1px solid rgba(205, 181, 148, .5);
+      border-radius: var(--radio); padding: 30px 26px 26px; user-select: none;
+    }
+    .resena__estrellas { color: var(--miel); letter-spacing: 3px; font-size: .95rem; }
+    .resena blockquote {
+      margin: 14px 0 18px; font-family: var(--serif); font-size: 1.42rem; line-height: 1.35; color: var(--espresso);
+    }
+    .resena figcaption { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); display: flex; align-items: center; gap: 8px; }
+    .resena figcaption svg { width: 16px; height: 16px; }
+    .carrusel__controles { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+    .carrusel__puntos { display: flex; gap: 4px; }
+    .carrusel__puntos button {
+      width: 28px; height: 28px; border: 0; background: transparent; cursor: pointer; padding: 0; display: grid; place-items: center;
+    }
+    .carrusel__puntos button::after {
+      content: ""; width: 8px; height: 8px; border-radius: 99px; background: var(--arena-osc); transition: width var(--trans), background var(--trans);
+    }
+    .carrusel__puntos button[aria-current="true"]::after { width: 24px; background: var(--miel); }
+    .carrusel__flechas { display: flex; gap: 8px; }
+    .flecha {
+      width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--arena-osc); background: var(--blanco);
+      cursor: pointer; display: grid; place-items: center; transition: background var(--trans), color var(--trans), border-color var(--trans);
+    }
+    .flecha:hover { background: var(--espresso); color: var(--crema); border-color: var(--espresso); }
+    .flecha svg { width: 18px; height: 18px; }
+
+    /* =========================================================
+       CITAS
+       ========================================================= */
+    .citas__grid { display: grid; gap: 28px; }
+    .tarjeta { background: var(--blanco); border-radius: var(--radio); padding: 26px 22px; border: 1px solid rgba(205, 181, 148, .5); }
+    .tarjeta h3 { font-size: 1.7rem; margin-bottom: 14px; }
+    .horario { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    .horario th, .horario td { padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--crema-2); }
+    .horario td { text-align: right; color: var(--texto-suave); }
+    .horario th { font-weight: 500; }
+    .horario tr.hoy { background: var(--crema-2); }
+    .horario tr.hoy th, .horario tr.hoy td { color: var(--espresso); font-weight: 700; }
+    .horario tr.hoy th::after {
+      content: "Hoy"; margin-left: 8px; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--miel); color: var(--blanco); padding: 2px 8px; border-radius: 99px; vertical-align: 2px;
+    }
+    .horario tr:last-child th, .horario tr:last-child td { border-bottom: 0; }
+    .estado-linea { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: .9rem; font-weight: 500; }
+    .direccion { display: flex; gap: 12px; margin: 20px 0; font-size: .95rem; }
+    .direccion svg { width: 22px; height: 22px; color: var(--miel); flex: none; margin-top: 2px; }
+    .mapa { border: 0; width: 100%; height: 260px; border-radius: var(--radio-sm); margin-top: 18px; background: var(--crema-2); display: block; }
+
+    .form { display: grid; gap: 16px; }
+    .campo { display: grid; gap: 6px; }
+    .campo label { font-size: .82rem; font-weight: 600; color: var(--cafe); letter-spacing: .02em; }
+    .campo input, .campo select, .campo textarea {
+      width: 100%; min-height: 50px; padding: 12px 14px; border-radius: var(--radio-sm);
+      border: 1px solid var(--arena-osc); background: var(--crema); font-size: 16px;
+      transition: border-color var(--trans), box-shadow var(--trans), background var(--trans);
+      -webkit-appearance: none; appearance: none;
+    }
+    .campo select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a4436' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px;
+    }
+    .campo textarea { min-height: 96px; resize: vertical; }
+    .campo input:focus, .campo select:focus, .campo textarea:focus { outline: none; border-color: var(--miel); background: var(--blanco); box-shadow: 0 0 0 4px rgba(184, 137, 75, .15); }
+    .campo .ayuda { font-size: .78rem; color: var(--texto-suave); min-height: 1em; }
+    .campo .ayuda.error { color: var(--rojo-off); font-weight: 600; }
+    .campo.invalido input, .campo.invalido select { border-color: var(--rojo-off); }
+    .fila-2 { display: grid; gap: 16px; }
+    .form .btn { width: 100%; margin-top: 6px; }
+    .form__nota { font-size: .78rem; color: var(--texto-suave); text-align: center; margin: 0; }
+
+    /* =========================================================
+       PREGUNTAS FRECUENTES
+       ========================================================= */
+    .faq { max-width: 820px; }
+    .faq__item { border-bottom: 1px solid var(--arena); }
+    .faq__btn {
+      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 22px 0; background: none; border: 0; cursor: pointer; text-align: left;
+      font-family: var(--serif); font-size: 1.4rem; line-height: 1.25; color: var(--espresso);
+    }
+    .faq__signo { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1px solid var(--arena-osc); position: relative; transition: transform var(--trans), background var(--trans); }
+    .faq__signo::before, .faq__signo::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; background: var(--espresso); transform: translate(-50%, -50%); transition: transform var(--trans); }
+    .faq__signo::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .faq__btn[aria-expanded="true"] .faq__signo { background: var(--espresso); }
+    .faq__btn[aria-expanded="true"] .faq__signo::before { background: var(--crema); }
+    .faq__btn[aria-expanded="true"] .faq__signo::after { background: var(--crema); transform: translate(-50%, -50%) rotate(0deg); }
+    .faq__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--trans); }
+    .faq__panel > div { overflow: hidden; }
+    .faq__panel p { color: var(--texto-suave); padding-right: 40px; }
+    .faq__item.abierto .faq__panel { grid-template-rows: 1fr; }
+
+    /* =========================================================
+       LLAMADO FINAL Y PIE
+       ========================================================= */
+    .cta-final { text-align: center; position: relative; overflow: hidden; }
+    .cta-final::before {
+      content: ""; position: absolute; width: 700px; height: 700px; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(184, 137, 75, .28), transparent 60%); pointer-events: none;
+    }
+    .cta-final h2 { font-size: clamp(2.5rem, 9vw, 4.4rem); max-width: 760px; margin: 0 auto; position: relative; }
+    .cta-final p { color: var(--arena); max-width: 520px; margin: 18px auto 30px; position: relative; }
+    .cta-final .acciones { display: flex; flex-direction: column; gap: 12px; align-items: center; position: relative; }
+
+    .pie { background: #241913; color: var(--arena); padding: 56px 0 110px; font-size: .9rem; }
+    .pie__grid { display: grid; gap: 30px; }
+    .pie .logo img { height: auto; width: 210px; max-width: 100%; }
+    .pie h4 { font-family: var(--sans); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--miel-claro); margin: 0 0 12px; font-weight: 600; }
+    .pie a { text-decoration: none; }
+    .pie a:hover { color: var(--miel-claro); }
+    .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+    .pie__legal { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(228, 211, 189, .15); font-size: .76rem; color: rgba(228, 211, 189, .65); }
+
+    /* Botón flotante de WhatsApp */
+    .wa-flotante {
+      position: fixed; right: 18px; bottom: 18px; z-index: 60;
+      width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff;
+      display: grid; place-items: center; box-shadow: 0 12px 28px -8px rgba(18, 140, 70, .55);
+      transition: transform var(--trans);
+    }
+    .wa-flotante:hover { transform: scale(1.08); }
+    .wa-flotante svg { width: 30px; height: 30px; }
+    .wa-flotante::before {
+      content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25d366;
+      animation: onda 2.6s infinite;
+    }
+    @keyframes onda { from { transform: scale(1); opacity: .7; } to { transform: scale(1.6); opacity: 0; } }
+
+    /* =========================================================
+       ANIMACIONES DE SCROLL
+       ========================================================= */
+    .revelar { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
+    .revelar.visible { opacity: 1; transform: none; }
+    .revelar[data-retraso="1"] { transition-delay: .1s; }
+    .revelar[data-retraso="2"] { transition-delay: .2s; }
+    .revelar[data-retraso="3"] { transition-delay: .3s; }
+
+    /* =========================================================
+       RESPONSIVO (mobile-first: de aquí hacia arriba)
+       ========================================================= */
+    @media (min-width: 600px) {
+      .hero__acciones, .cta-final .acciones { flex-direction: row; flex-wrap: wrap; }
+      .cta-final .acciones { justify-content: center; }
+      .servicios { grid-template-columns: repeat(2, 1fr); }
+      .pasos { grid-template-columns: repeat(2, 1fr); }
+      .galeria { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 180px; }
+      .fila-2 { grid-template-columns: 1fr 1fr; }
+      .pie__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 960px) {
+      :root { --gutter: 32px; --nav-h: 76px; }
+      .nav .logo img { height: 30px; }
+      .seccion { padding: 120px 0; }
+      .nav__links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+      .nav__links a { text-decoration: none; font-size: .9rem; font-weight: 500; position: relative; padding: 6px 0; }
+      .nav__links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--miel); transform: scaleX(0); transform-origin: right; transition: transform var(--trans); }
+      .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+      .nav__cta { display: inline-flex; min-height: 44px; }
+      .hamburguesa, .menu-movil { display: none; }
+      .hero { padding: 70px 0 110px; }
+      .hero__grid { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 60px; }
+      .sobre__grid { grid-template-columns: .9fr 1.1fr; align-items: center; gap: 80px; }
+      .servicios { grid-template-columns: repeat(3, 1fr); }
+      .pasos { grid-template-columns: repeat(4, 1fr); }
+      .galeria { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; gap: 14px; }
+      .opiniones__grid { grid-template-columns: .7fr 1.3fr; align-items: center; gap: 70px; }
+      .calif__num { font-size: 8rem; }
+      .resena { padding: 44px 44px 36px; }
+      .resena blockquote { font-size: 1.8rem; }
+      .citas__grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 32px; }
+      .tarjeta { padding: 36px; }
+      .mapa { height: 300px; }
+      .pie__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+      .pie { padding-bottom: 56px; }
+    }
+
+    /* Respeto a quienes prefieren menos movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .revelar { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Franja de demostración -->
+  <div class="franja-demo" role="note">
+    <strong>Propuesta de diseño</strong> · Demostración preparada para Studio 43. No es el sitio oficial.
+  </div>
+
+  <!-- 2. Menú fijo -->
+  <header class="nav" id="nav">
+    <div class="contenedor nav__in">
+      <a href="#inicio" class="logo" aria-label="Studio 43, ir al inicio">
+        <img src="img/logo-studio43-nav.png" alt="Studio 43" width="577" height="102">
+      </a>
+      <ul class="nav__links">
+        <li><a href="#nosotras">Nosotras</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#citas">Ubicación</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+      <a href="#citas" class="btn btn--primario nav__cta">Agenda tu cita</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"><span></span></button>
+    </div>
+  </header>
+
+  <nav class="menu-movil" id="menu-movil" aria-label="Menú principal">
+    <a href="#nosotras">Nosotras</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#citas">Ubicación y horario</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#citas" class="btn btn--primario">Agenda tu cita</a>
+  </nav>
+
+  <main>
+    <!-- 3. Portada -->
+    <section class="hero" id="inicio">
+      <div class="contenedor hero__grid">
+        <div>
+          <div class="hero__chips revelar">
+            <a class="chip" href="#opiniones"><span class="estrellas" aria-hidden="true">★★★★★</span> 4.7 en Google · 52 reseñas</a>
+            <span class="chip estado" data-estado><span class="estado-punto"></span><span data-estado-texto>Consultando horario…</span></span>
+          </div>
+          <h1 class="revelar" data-retraso="1">El color que <em>soñaste</em>, con un cabello que se siente sano.</h1>
+          <p class="hero__texto revelar" data-retraso="2">
+            Balayage, baby lights y efectos de color en Puebla. Te escuchamos, te asesoramos según tu tono y trabajamos con productos de calidad para que salgas feliz y con tu cabello cuidado.
+          </p>
+          <div class="hero__acciones revelar" data-retraso="3">
+            <a href="#citas" class="btn btn--primario">Agenda tu cita
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#servicios" class="btn btn--borde">Ver servicios</a>
+          </div>
+        </div>
+
+        <div class="hero__visual revelar" data-retraso="2" aria-hidden="true">
+          <div class="hero__arco"><!-- Espacio para foto --></div>
+          <div class="hero__tarjeta">
+            <span class="estrellas">★★★★★</span>
+            <strong>4.7</strong>
+            <span>Calificación en Google con 52 reseñas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Sobre nosotras -->
+    <section class="seccion seccion--arena" id="nosotras">
+      <div class="contenedor sobre__grid">
+        <div class="sobre__visual revelar">
+          <div class="sobre__img" role="img" aria-hidden="true"></div>
+          <div class="sobre__cita">
+            “Desde el 2015 que conocí a Liz, nadie más volvió a tocarme el cabello.”
+            <small>Reseña en Google</small>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow revelar">Sobre nosotras</span>
+          <h2 class="revelar" data-retraso="1">Un salón donde te <em>escuchan</em> antes de tocar tu cabello.</h2>
+          <p class="revelar" data-retraso="2" style="margin-top:20px;color:var(--texto-suave)">
+            En Studio 43 te recibe Liz y su equipo. Hay clientas que llevan años confiándole su cabello, y no es casualidad: antes de cada servicio platicamos contigo, entendemos lo que buscas y te orientamos sobre lo que mejor te va.
+          </p>
+          <div class="pilares">
+            <div class="pilar revelar" data-retraso="1">
+              <span class="pilar__icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/><circle cx="8.5" cy="9" r="1.2" fill="currentColor"/><circle cx="8" cy="14" r="1.2" fill="currentColor"/></svg></span>
+              <div>
+                <h3>Asesoría de color</h3>
+                <p>Elegimos contigo el tono y la técnica que armonizan con tu piel y tu estilo, para lograr ese efecto que guardaste en Pinterest.</p>
+              </div>
+            </div>
+            <div class="pilar revelar" data-retraso="2">
+              <span class="pilar__icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span>
+              <div>
+                <h3>Cuidado del cabello</h3>
+                <p>Trabajamos con productos de calidad; es algo que nuestras clientas destacan en sus reseñas.</p>
+              </div>
+            </div>
+            <div class="pilar revelar" data-retraso="3">
+              <span class="pilar__icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4l12 16M18 4L6 20"/><circle cx="6" cy="4" r="2"/><circle cx="18" cy="4" r="2"/></svg></span>
+              <div>
+                <h3>Cortes con sugerencia</h3>
+                <p>¿No sabes qué corte hacerte? Te recomendamos el ideal para tu rostro y tu rutina.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Servicios -->
+    <section class="seccion" id="servicios">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span class="eyebrow revelar">Servicios</span>
+          <h2 class="revelar" data-retraso="1">Lo que hacemos <em>con cariño</em></h2>
+          <p class="revelar" data-retraso="2">Toca “Reservar” en el servicio que te interesa y lo dejamos listo en tu solicitud de cita.</p>
+        </div>
+
+        <div class="filtros revelar" role="group" aria-label="Filtrar servicios por categoría">
+          <button class="filtro" data-filtro="todos" aria-pressed="true">Todos</button>
+          <button class="filtro" data-filtro="color" aria-pressed="false">Color</button>
+          <button class="filtro" data-filtro="corte" aria-pressed="false">Corte y peinado</button>
+          <button class="filtro" data-filtro="tratamientos" aria-pressed="false">Tratamientos</button>
+        </div>
+
+        <!-- Las tarjetas se generan desde el arreglo SERVICIOS del script -->
+        <div class="servicios" id="servicios-lista"></div>
+
+        <p class="nota-precios">
+          <strong>Sobre los precios:</strong> son los precios publicados en la agenda en línea del salón. Si tienes dudas sobre tu caso, escríbenos por WhatsApp.
+        </p>
+        <p class="tambien">También ofrecemos uñas, maquillaje, microblading y lash lifting. Pregúntanos por WhatsApp.</p>
+      </div>
+    </section>
+
+    <!-- 6. Cómo trabajamos -->
+    <section class="seccion seccion--oscura" id="proceso">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span class="eyebrow revelar">Cómo trabajamos</span>
+          <h2 class="revelar" data-retraso="1">Tu cita, <em>paso a paso</em></h2>
+          <p class="revelar" data-retraso="2">Sin prisas y sin sorpresas: así cuidamos cada visita.</p>
+        </div>
+        <ol class="pasos">
+          <li class="paso revelar"><h3>Agenda</h3><p>Escríbenos por WhatsApp y aparta tu lugar. Te recomendamos reservar con anticipación, ¡la agenda se llena!</p></li>
+          <li class="paso revelar" data-retraso="1"><h3>Platicamos</h3><p>Nos cuentas qué quieres y nos enseñas tus fotos de inspiración. Te escuchamos con calma.</p></li>
+          <li class="paso revelar" data-retraso="2"><h3>Te asesoramos</h3><p>Te orientamos sobre el tono, la técnica o el corte que mejor te va.</p></li>
+          <li class="paso revelar" data-retraso="3"><h3>Te consentimos</h3><p>Trabajamos con productos de calidad para que salgas feliz con tu resultado.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. Galería -->
+    <section class="seccion" id="galeria">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span class="eyebrow revelar">Galería</span>
+          <h2 class="revelar" data-retraso="1">Nuestras <em>creaciones</em></h2>
+          <p class="revelar" data-retraso="2">Rubios, balayage, cambios de look y antes y después de nuestras clientas.</p>
+        </div>
+        <!-- Fotos reales en la carpeta img/. Los espacios con degradado (--g) son temporales: cámbialos por <img> como los de arriba. -->
+        <div class="galeria">
+          <figure class="foto foto--alta foto--real revelar"><img src="img/balayage-studio43.jpg" alt="Cabello castaño con luces rubias y ondas, frente al letrero de Studio 43" loading="lazy" width="610" height="810"><figcaption>Luces y ondas</figcaption></figure>
+          <figure class="foto foto--alta foto--real revelar" data-retraso="1"><img src="img/rubio-cenizo.jpg" alt="Clienta con rubio cenizo largo y ondulado en el salón" loading="lazy" width="610" height="882"><figcaption>Rubio cenizo</figcaption></figure>
+          <figure class="foto foto--alta foto--real revelar" data-retraso="2"><img src="img/castano-iluminado.jpg" alt="Cabello castaño oscuro con reflejos cobrizos y rizos" loading="lazy" width="610" height="810"><figcaption>Castaño iluminado</figcaption></figure>
+          <figure class="foto foto--alta foto--real revelar" data-retraso="3"><img src="img/balayage-largo.jpg" alt="Cabello largo castaño con efecto de color miel en las puntas" loading="lazy" width="596" height="604"><figcaption>Efecto de color</figcaption></figure>
+          <figure class="foto revelar" style="--g:linear-gradient(110deg,#5a3f2e,#a87a4c 45%,#ecd2a6)"><!-- Espacio para foto --></figure>
+          <figure class="foto revelar" data-retraso="1" style="--g:linear-gradient(160deg,#ead8c0,#b9906a)"><!-- Espacio para foto --></figure>
+          <figure class="foto revelar" data-retraso="2" style="--g:linear-gradient(130deg,#f4e6d1,#cfae84)"><!-- Espacio para foto --></figure>
+          <figure class="foto revelar" data-retraso="3" style="--g:linear-gradient(150deg,#d8b98e,#7f5a3f)"><!-- Espacio para foto --></figure>
+        </div>
+        <div class="aviso-fotos revelar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+          <span><strong>Aquí van más fotos.</strong> Los espacios con degradado son temporales; se reemplazan por más trabajos reales del salón.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Opiniones -->
+    <section class="seccion seccion--arena" id="opiniones">
+      <div class="contenedor opiniones__grid">
+        <div class="calif revelar">
+          <span class="eyebrow">Opiniones</span>
+          <div class="calif__num">4.7</div>
+          <div class="calif__estrellas" aria-label="4.7 de 5 estrellas">★★★★★</div>
+          <p>Promedio de 52 reseñas en Google Maps.</p>
+          <a class="btn btn--borde" target="_blank" rel="noopener" href="https://maps.google.com/?cid=7358700697789110194">Ver reseñas en Google</a>
+        </div>
+
+        <div class="carrusel revelar" data-retraso="1" id="carrusel" aria-roledescription="carrusel" aria-label="Reseñas de clientas">
+          <div class="carrusel__ventana">
+            <!-- Las reseñas se generan desde el arreglo RESENAS del script -->
+            <div class="carrusel__pista" id="carrusel-pista" aria-live="polite"></div>
+          </div>
+          <div class="carrusel__controles">
+            <div class="carrusel__puntos" id="carrusel-puntos" role="tablist" aria-label="Elegir reseña"></div>
+            <div class="carrusel__flechas">
+              <button class="flecha" id="carrusel-prev" aria-label="Reseña anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+              <button class="flecha" id="carrusel-next" aria-label="Reseña siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Citas -->
+    <section class="seccion" id="citas">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span class="eyebrow revelar">Citas</span>
+          <h2 class="revelar" data-retraso="1">Aparta tu <em>lugar</em></h2>
+          <p class="revelar" data-retraso="2">Llena tus datos y te abrimos WhatsApp con tu mensaje listo. Te confirmamos disponibilidad por ahí.</p>
+        </div>
+
+        <div class="citas__grid">
+          <div class="tarjeta revelar">
+            <h3>Horario</h3>
+            <table class="horario" id="tabla-horario" aria-label="Horario de atención"></table>
+            <div class="estado-linea estado" data-estado><span class="estado-punto"></span><span data-estado-texto></span></div>
+
+            <div class="direccion">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <span>Av 43 Pte 306, Gabriel Pastor 1ra Secc, 72420 Heroica Puebla de Zaragoza, Pue.</span>
+            </div>
+            <!-- Ruta con el formato oficial de Google Maps (api=1). Google resuelve el destino a la ficha de Studio 43
+                 (0x85cfc0b801ab424f:0x661f5b4bec2397b2), la misma del mapa incrustado. En celular abre la app de Maps. -->
+            <a class="btn btn--miel" id="btn-como-llegar" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Studio%2043%2C%20Av%2043%20Pte%20306%2C%20Gabriel%20Pastor%201ra%20Secc%2C%2072420%20Heroica%20Puebla%20de%20Zaragoza%2C%20Pue.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+              Cómo llegar
+            </a>
+            <iframe class="mapa" title="Mapa de Studio 43 en Puebla" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.7903076007365!2d-98.2101976!3d19.0289596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc0b801ab424f%3A0x661f5b4bec2397b2!2sStudio%2043!5e0!3m2!1ses-419!2smx!4v1791663616989!5m2!1ses-419!2smx"></iframe>
+          </div>
+
+          <div class="tarjeta revelar" data-retraso="1">
+            <h3>Solicita tu cita</h3>
+            <form class="form" id="form-cita" novalidate>
+              <div class="campo">
+                <label for="f-nombre">Tu nombre</label>
+                <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" required placeholder="¿Cómo te llamas?">
+              </div>
+              <div class="campo">
+                <label for="f-tel">Teléfono / WhatsApp</label>
+                <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="10 dígitos" pattern="[0-9 ()+-]{10,}">
+              </div>
+              <div class="campo">
+                <label for="f-servicio">Servicio</label>
+                <select id="f-servicio" name="servicio" required>
+                  <option value="">Elige un servicio</option>
+                </select>
+              </div>
+              <div class="fila-2">
+                <div class="campo">
+                  <label for="f-fecha">Fecha</label>
+                  <input id="f-fecha" name="fecha" type="date" required>
+                  <span class="ayuda" id="ayuda-fecha">Domingos cerrado.</span>
+                </div>
+                <div class="campo">
+                  <label for="f-hora">Horario</label>
+                  <select id="f-hora" name="hora" required disabled>
+                    <option value="">Elige primero la fecha</option>
+                  </select>
+                </div>
+              </div>
+              <div class="campo">
+                <label for="f-comentario">Comentario (opcional)</label>
+                <textarea id="f-comentario" name="comentario" placeholder="Cuéntanos qué te gustaría o si tu cabello tiene color previo."></textarea>
+              </div>
+              <button type="submit" class="btn btn--primario">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+                Enviar por WhatsApp
+              </button>
+              <p class="form__nota">Tu cita queda confirmada cuando el salón te responda.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Preguntas frecuentes -->
+    <section class="seccion seccion--arena" id="faq">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span class="eyebrow revelar">Preguntas frecuentes</span>
+          <h2 class="revelar" data-retraso="1">Resolvemos tus <em>dudas</em></h2>
+        </div>
+        <div class="faq" id="faq-lista">
+          <div class="faq__item revelar">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-1" id="faq-b1">¿Cómo agendo mi cita?<span class="faq__signo" aria-hidden="true"></span></button>
+            <div class="faq__panel" id="faq-1" role="region" aria-labelledby="faq-b1"><div>
+              <p>Lo más fácil es por WhatsApp: llena el formulario de esta página y te abrimos el chat con tu mensaje listo. Te sugerimos reservar con anticipación, sobre todo en fines de semana, porque la agenda se llena. Si necesitas cancelar, puedes hacerlo hasta 3 horas antes de tu cita.</p>
+            </div></div>
+          </div>
+          <div class="faq__item revelar">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-2" id="faq-b2">¿Cuánto cuesta un balayage o un tinte?<span class="faq__signo" aria-hidden="true"></span></button>
+            <div class="faq__panel" id="faq-2" role="region" aria-labelledby="faq-b2"><div>
+              <p>En la sección de servicios verás los precios publicados en nuestra agenda en línea. Si tienes dudas sobre cuál es el servicio indicado para tu cabello, escríbenos por WhatsApp y te orientamos.</p>
+            </div></div>
+          </div>
+          <div class="faq__item revelar">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-3" id="faq-b3">Mi color no quedó como esperaba, ¿lo pueden corregir?<span class="faq__signo" aria-hidden="true"></span></button>
+            <div class="faq__panel" id="faq-3" role="region" aria-labelledby="faq-b3"><div>
+              <p>Una clienta nos cuenta en Google que su cabello se puso verde por la alberca y aquí lo rescatamos. Cada caso es distinto, por eso el precio es previa valoración. Escríbenos y cuéntanos tu caso.</p>
+            </div></div>
+          </div>
+          <div class="faq__item revelar">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-4" id="faq-b4">¿La decoloración me va a maltratar el cabello?<span class="faq__signo" aria-hidden="true"></span></button>
+            <div class="faq__panel" id="faq-4" role="region" aria-labelledby="faq-b4"><div>
+              <p>Toda decoloración es un proceso químico. Nuestras clientas destacan que trabajamos con productos de calidad que no les dañan el cabello. Si tienes dudas sobre tu caso, platícalo con nosotras antes de tu cita.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Llamado final -->
+    <section class="seccion seccion--oscura cta-final">
+      <div class="contenedor">
+        <span class="eyebrow revelar">Studio 43 · Puebla</span>
+        <h2 class="revelar" data-retraso="1">¿Lista para el cabello de tus <em>sueños</em>?</h2>
+        <p class="revelar" data-retraso="2">Cuéntanos qué tienes en mente y te ayudamos a lograrlo. Reserva con anticipación para asegurar tu lugar.</p>
+        <div class="acciones revelar" data-retraso="3">
+          <a href="#citas" class="btn btn--miel">Agenda tu cita</a>
+          <a href="#" class="btn btn--claro" data-wa>Escríbenos por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__grid">
+        <div>
+          <a href="#inicio" class="logo" aria-label="Studio 43, ir al inicio"><img src="img/logo-studio43-claro.png" alt="Studio 43 · Hair, Make up &amp; Nails" width="577" height="152" loading="lazy"></a>
+          <p style="margin-top:14px;max-width:300px">Salón de belleza en Puebla. Color, balayage, cortes y asesoría de imagen.</p>
+        </div>
+        <div>
+          <h4>Visítanos</h4>
+          <p>Av 43 Pte 306,<br>Gabriel Pastor 1ra Secc,<br>72420 Heroica Puebla de Zaragoza, Pue.</p>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <ul id="pie-horario"></ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#" data-wa>WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/studio43_ld/" target="_blank" rel="noopener">Instagram @studio43_ld</a></li>
+            <li><a href="https://www.facebook.com/Studio43Puebla/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.tiktok.com/@studio43_ld" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__legal">
+        Propuesta de diseño · Demostración preparada para Studio 43. No es el sitio oficial. Calificación y reseñas tomadas de Google Maps.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="#" class="wa-flotante" data-wa aria-label="Escríbenos por WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+  </a>
+
+  <script>
+    /* =========================================================
+       CONFIGURACIÓN EDITABLE
+       ========================================================= */
+
+    // Número de WhatsApp (código de país + número, sin espacios ni "+")
+    const WHATSAPP = "522227712522";
+
+    // Horario por día (0 = domingo … 6 = sábado). null = cerrado.
+    // Formato 24 h "HH:MM". Fuente: Google Maps / AgendaPro.
+    // PENDIENTE: confirmar martes (Google muestra un dato irregular) y cierre del sábado (Google 18:00, AgendaPro 17:00).
+    const HOURS = {
+      0: null,                 // Domingo
+      1: ["09:30", "19:00"],   // Lunes
+      2: ["09:30", "19:00"],   // Martes (por confirmar)
+      3: ["09:30", "19:00"],   // Miércoles
+      4: ["09:30", "19:00"],   // Jueves
+      5: ["09:30", "19:00"],   // Viernes
+      6: ["09:00", "18:00"]    // Sábado (por confirmar)
+    };
+
+    // Zona horaria del salón
+    const ZONA = "America/Mexico_City";
+
+    // Servicios: solo los respaldados por la investigación (agenda en línea del salón y reseñas).
+    // precio: número en MXN, o null para "Precio previa valoración".
+    const SERVICIOS = [
+      { cat: "color", nombre: "Balayage", desc: "Degradado de color natural y luminoso, pintado a mano para un efecto suave al crecer.", precio: 2600, dur: "Aprox. 3 h" },
+      { cat: "color", nombre: "Baby lights", desc: "Luces muy finas que iluminan tu rostro con un resultado sutil y natural.", precio: 2100, dur: "Aprox. 3 h" },
+      { cat: "color", nombre: "Efecto de color express", desc: "Reflejos sutiles para melenas ligeras, ideal si buscas un cambio rápido.", precio: 2200, dur: "Aprox. 1 h 30 min" },
+      { cat: "color", nombre: "Matiz o baño de color", desc: "Neutraliza tonos no deseados y le devuelve brillo a tu rubio. El precio varía según el largo.", precio: 480, desde: true, dur: "Desde 30 min" },
+      { cat: "color", nombre: "Retoque de tinte", desc: "Cubre tu raíz y mantiene tu color uniforme entre visitas.", precio: 680, dur: "Aprox. 30 min" },
+      { cat: "color", nombre: "Corrección de color", desc: "¿Tu color no quedó como esperabas o cambió de tono? Lo revisamos y te decimos cómo rescatarlo.", precio: null, dur: "Según valoración" },
+      { cat: "corte", nombre: "Corte de dama", desc: "Corte con asesoría: te sugerimos el estilo que mejor va con tu rostro y tu rutina.", precio: 450, dur: "Aprox. 1 h" },
+      { cat: "corte", nombre: "Corte de caballero", desc: "Corte a tu medida con acabado limpio.", precio: 260, dur: "Aprox. 40 min" },
+      { cat: "corte", nombre: "Peinado", desc: "Peinado suelto o recogido para tu evento.", precio: 350, dur: "Aprox. 1 h" },
+      { cat: "corte", nombre: "Ondas", desc: "Ondas con movimiento para lucir tu color.", precio: 250, dur: "Aprox. 1 h" },
+      { cat: "tratamientos", nombre: "Tratamiento", desc: "Pregúntanos cuál es el tratamiento ideal para tu cabello.", precio: 350, dur: "Aprox. 1 h" },
+      { cat: "tratamientos", nombre: "Keratina", desc: "Reduce el frizz y deja tu cabello más manejable.", precio: 1900, dur: "Aprox. 4 h" },
+      { cat: "tratamientos", nombre: "Extensiones 100% naturales", desc: "Más largo y volumen con cabello 100% natural.", precio: 6500, dur: "Aprox. 1 h" }
+    ];
+
+    // Reseñas reales de Google Maps (sin nombres de clientas).
+    // tipo "cita" = texto literal; tipo "resumen" = resumen fiel de una reseña.
+    const RESENAS = [
+      { tipo: "cita", texto: "El mejor lugar, desde el 2015 que conocí a Liz, nadie más volvió a tocarme el cabello. Excelente atención siempre, te cuidan un montón." },
+      { tipo: "cita", texto: "Antes de cortarme el cabello pedí sugerencias, la estilista súper profesional me recomendó el corte ideal y al final me encantó." },
+      { tipo: "cita", texto: "Muy buena atención de parte de todo el personal y en específico de la señorita Liz. Trabajo de calidad con productos de calidad." },
+      { tipo: "resumen", texto: "Mi cabello se había puesto verde por la alberca y aquí me lo rescataron." },
+      { tipo: "resumen", texto: "Logran los efectos de color tal cual los ves en Pinterest. Eso sí, reserva con anticipación porque se llena." },
+      { tipo: "cita", texto: "Todo súper bien hecho, amables y eficientes. Súper recomendado, 10 de 10." }
+    ];
+
+    /* =========================================================
+       UTILIDADES DE FECHA Y HORA (hora de Puebla)
+       ========================================================= */
+    const DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+    // Devuelve { dia (0-6), minutos desde medianoche, fechaISO } en la zona del salón
+    function ahoraEnPuebla() {
+      const partes = new Intl.DateTimeFormat("en-US", {
+        timeZone: ZONA, weekday: "short", hour: "2-digit", minute: "2-digit",
+        year: "numeric", month: "2-digit", day: "2-digit", hourCycle: "h23"
+      }).formatToParts(new Date()).reduce((o, p) => (o[p.type] = p.value, o), {});
+      const mapaDias = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      return {
+        dia: mapaDias[partes.weekday],
+        min: parseInt(partes.hour, 10) * 60 + parseInt(partes.minute, 10),
+        fechaISO: `${partes.year}-${partes.month}-${partes.day}`
+      };
+    }
+    const aMin = (hhmm) => { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; };
+
+    // Convierte "19:00" en "7:00 p. m."
+    function formato12(hhmm) {
+      let [h, m] = hhmm.split(":").map(Number);
+      const sufijo = h >= 12 ? "p. m." : "a. m.";
+      h = h % 12 || 12;
+      return `${h}:${String(m).padStart(2, "0")} ${sufijo}`;
+    }
+    const rangoTexto = (r) => r ? `${formato12(r[0])} – ${formato12(r[1])}` : "Cerrado";
+
+    // Busca el siguiente momento de apertura a partir de hoy
+    function siguienteApertura(dia, min) {
+      for (let i = 0; i < 8; i++) {
+        const d = (dia + i) % 7;
+        const r = HOURS[d];
+        if (!r) continue;
+        if (i === 0 && min >= aMin(r[0])) continue;
+        const cuando = i === 0 ? "hoy" : i === 1 ? "mañana" : `el ${DIAS[d].toLowerCase()}`;
+        return `Abre ${cuando} a las ${formato12(r[0])}`;
+      }
+      return "";
+    }
+
+    /* =========================================================
+       INDICADOR ABIERTO / CERRADO
+       ========================================================= */
+    function actualizarEstado() {
+      const { dia, min } = ahoraEnPuebla();
+      const r = HOURS[dia];
+      const abierto = !!r && min >= aMin(r[0]) && min < aMin(r[1]);
+      let texto;
+      if (abierto) {
+        const faltan = aMin(r[1]) - min;
+        texto = faltan <= 60 ? `Abierto ahora · cierra pronto (${formato12(r[1])})` : `Abierto ahora · hasta las ${formato12(r[1])}`;
+      } else {
+        texto = `Cerrado ahora · ${siguienteApertura(dia, min)}`;
+      }
+      document.querySelectorAll("[data-estado]").forEach((el) => {
+        el.classList.toggle("estado--abierto", abierto);
+        el.classList.toggle("estado--cerrado", !abierto);
+        el.querySelector("[data-estado-texto]").textContent = texto;
+      });
+    }
+
+    /* =========================================================
+       TABLA DE HORARIO (con el día de hoy resaltado)
+       ========================================================= */
+    function pintarHorario() {
+      const { dia } = ahoraEnPuebla();
+      const orden = [1, 2, 3, 4, 5, 6, 0]; // Lunes primero
+      document.getElementById("tabla-horario").innerHTML = "<tbody>" + orden.map((d) =>
+        `<tr class="${d === dia ? "hoy" : ""}"><th scope="row">${DIAS[d]}</th><td>${rangoTexto(HOURS[d])}</td></tr>`
+      ).join("") + "</tbody>";
+
+      // Versión compacta para el pie de página
+      document.getElementById("pie-horario").innerHTML = `
+        <li>Lun a vie: ${rangoTexto(HOURS[1])}</li>
+        <li>Sábado: ${rangoTexto(HOURS[6])}</li>
+        <li>Domingo: ${rangoTexto(HOURS[0])}</li>`;
+    }
+
+    /* =========================================================
+       ENLACES DE WHATSAPP
+       ========================================================= */
+    const urlWhatsApp = (mensaje) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+    document.querySelectorAll("[data-wa]").forEach((a) => {
+      a.href = urlWhatsApp("¡Hola, Studio 43! Me gustaría información para agendar una cita.");
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+
+    /* =========================================================
+       MENÚ: SOMBRA AL HACER SCROLL Y HAMBURGUESA
+       ========================================================= */
+    const nav = document.getElementById("nav");
+    const btnMenu = document.getElementById("hamburguesa");
+    const menuMovil = document.getElementById("menu-movil");
+
+    window.addEventListener("scroll", () => nav.classList.toggle("con-sombra", window.scrollY > 10), { passive: true });
+
+    function toggleMenu(abrir) {
+      const abierto = typeof abrir === "boolean" ? abrir : btnMenu.getAttribute("aria-expanded") !== "true";
+      // El menú empieza justo debajo de la barra (la franja demo puede estar visible arriba)
+      if (abierto) menuMovil.style.top = nav.getBoundingClientRect().bottom + "px";
+      btnMenu.setAttribute("aria-expanded", abierto);
+      btnMenu.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+      menuMovil.classList.toggle("abierto", abierto);
+      document.body.classList.toggle("sin-scroll", abierto);
+    }
+    btnMenu.addEventListener("click", () => toggleMenu());
+    menuMovil.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleMenu(false); });
+    window.matchMedia("(min-width: 960px)").addEventListener("change", (e) => { if (e.matches) toggleMenu(false); });
+
+    /* =========================================================
+       SERVICIOS: TARJETAS, FILTROS Y BOTÓN "RESERVAR"
+       ========================================================= */
+    const nombresCat = { color: "Color", corte: "Corte y peinado", tratamientos: "Tratamientos" };
+    const moneda = (n) => "$" + n.toLocaleString("es-MX");
+    const lista = document.getElementById("servicios-lista");
+    const selServicio = document.getElementById("f-servicio");
+
+    lista.innerHTML = SERVICIOS.map((s) => `
+      <article class="servicio" data-cat="${s.cat}">
+        <span class="servicio__cat">${nombresCat[s.cat]}</span>
+        <h3>${s.nombre}</h3>
+        <p>${s.desc}</p>
+        <div class="servicio__pie">
+          ${s.precio === null
+            ? `<span class="precio precio--consultar">Precio previa valoración<small>${s.dur}</small></span>`
+            : `<span class="precio">${s.desde ? "Desde " : ""}${moneda(s.precio)}<small>${s.dur}</small></span>`}
+          <button class="btn-reservar" type="button" data-reservar="${s.nombre}">Reservar</button>
+        </div>
+      </article>`).join("");
+
+    // Opciones del formulario agrupadas por categoría
+    Object.entries(nombresCat).forEach(([clave, etiqueta]) => {
+      const grupo = document.createElement("optgroup");
+      grupo.label = etiqueta;
+      SERVICIOS.filter((s) => s.cat === clave).forEach((s) => grupo.append(new Option(s.nombre, s.nombre)));
+      selServicio.append(grupo);
+    });
+    selServicio.append(new Option("Otro / no estoy segura", "Otro (lo platicamos)"));
+
+    // Filtros por categoría
+    document.querySelectorAll(".filtro").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = btn.dataset.filtro;
+        document.querySelectorAll(".filtro").forEach((b) => b.setAttribute("aria-pressed", b === btn));
+        lista.querySelectorAll(".servicio").forEach((card) => {
+          const mostrar = f === "todos" || card.dataset.cat === f;
+          card.hidden = !mostrar;
+          card.classList.remove("aparece");
+          if (mostrar) { void card.offsetWidth; card.classList.add("aparece"); }
+        });
+      });
+    });
+
+    // "Reservar": preselecciona el servicio y lleva al formulario
+    lista.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-reservar]");
+      if (!btn) return;
+      selServicio.value = btn.dataset.reservar;
+      selServicio.closest(".campo").classList.remove("invalido");
+      document.getElementById("citas").scrollIntoView({ behavior: reducirMov ? "auto" : "smooth" });
+      setTimeout(() => document.getElementById("f-nombre").focus({ preventScroll: true }), reducirMov ? 0 : 700);
+    });
+
+    /* =========================================================
+       CARRUSEL DE RESEÑAS (flechas, puntos, autoplay y swipe)
+       ========================================================= */
+    const reducirMov = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pista = document.getElementById("carrusel-pista");
+    const puntos = document.getElementById("carrusel-puntos");
+    const iconoGoogle = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.2 13.6a6 6 0 0 1 0-3.8V7.1H2.7a10 10 0 0 0 0 9.2l3.5-2.7z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.9.5 4 1.5l3-3A10 10 0 0 0 2.7 7.1l3.5 2.7C7 7.7 9.3 5.9 12 5.9z"/></svg>';
+
+    pista.innerHTML = RESENAS.map((r, i) => `
+      <figure class="resena" role="group" aria-roledescription="reseña" aria-label="${i + 1} de ${RESENAS.length}">
+        <div class="resena__estrellas" aria-hidden="true">★★★★★</div>
+        <blockquote>${r.tipo === "cita" ? `“${r.texto}”` : r.texto}</blockquote>
+        <figcaption>${iconoGoogle} ${r.tipo === "cita" ? "Reseña en Google" : "Reseña en Google · resumen"}</figcaption>
+      </figure>`).join("");
+    puntos.innerHTML = RESENAS.map((_, i) => `<button type="button" role="tab" aria-label="Ver reseña ${i + 1}"></button>`).join("");
+
+    let actual = 0;
+    let temporizador = null;
+
+    function irA(i) {
+      actual = (i + RESENAS.length) % RESENAS.length;
+      pista.style.transform = `translateX(-${actual * 100}%)`;
+      puntos.querySelectorAll("button").forEach((b, j) => b.setAttribute("aria-current", j === actual));
+    }
+    function autoplay(iniciar) {
+      clearInterval(temporizador);
+      if (iniciar && !reducirMov) temporizador = setInterval(() => irA(actual + 1), 6000);
+    }
+
+    document.getElementById("carrusel-prev").addEventListener("click", () => { irA(actual - 1); autoplay(true); });
+    document.getElementById("carrusel-next").addEventListener("click", () => { irA(actual + 1); autoplay(true); });
+    puntos.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (b) { irA([...puntos.children].indexOf(b)); autoplay(true); }
+    });
+
+    // Pausa al pasar el mouse o al enfocar con teclado
+    const carrusel = document.getElementById("carrusel");
+    carrusel.addEventListener("mouseenter", () => autoplay(false));
+    carrusel.addEventListener("mouseleave", () => autoplay(true));
+    carrusel.addEventListener("focusin", () => autoplay(false));
+    carrusel.addEventListener("focusout", () => autoplay(true));
+    document.addEventListener("visibilitychange", () => autoplay(!document.hidden));
+
+    // Deslizamiento táctil
+    let inicioX = 0, inicioY = 0, arrastrando = false;
+    const ventana = carrusel.querySelector(".carrusel__ventana");
+    ventana.addEventListener("touchstart", (e) => {
+      inicioX = e.touches[0].clientX; inicioY = e.touches[0].clientY; arrastrando = true; autoplay(false);
+    }, { passive: true });
+    ventana.addEventListener("touchend", (e) => {
+      if (!arrastrando) return;
+      arrastrando = false;
+      const dx = e.changedTouches[0].clientX - inicioX;
+      const dy = e.changedTouches[0].clientY - inicioY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) irA(actual + (dx < 0 ? 1 : -1));
+      autoplay(true);
+    });
+
+    irA(0);
+    autoplay(true);
+
+    /* =========================================================
+       FORMULARIO DE CITA → WHATSAPP
+       ========================================================= */
+    const form = document.getElementById("form-cita");
+    const inFecha = document.getElementById("f-fecha");
+    const selHora = document.getElementById("f-hora");
+    const ayudaFecha = document.getElementById("ayuda-fecha");
+
+    // Fecha mínima = hoy en Puebla (o mañana si hoy ya cerró)
+    function fijarFechaMinima() {
+      const { fechaISO, dia, min } = ahoraEnPuebla();
+      const r = HOURS[dia];
+      const yaCerro = !r || min >= aMin(r[1]) - 60;
+      const base = new Date(fechaISO + "T12:00:00");
+      if (yaCerro) base.setDate(base.getDate() + 1);
+      inFecha.min = base.toISOString().slice(0, 10);
+    }
+
+    // Día de la semana de una fecha "AAAA-MM-DD" sin depender de la zona del navegador
+    const diaDeFecha = (iso) => new Date(iso + "T12:00:00").getDay();
+
+    // Llena los horarios cada 30 min según el día elegido (último turno: 1 h antes del cierre)
+    function llenarHoras() {
+      const campo = inFecha.closest(".campo");
+      selHora.innerHTML = "";
+      if (!inFecha.value) {
+        selHora.disabled = true;
+        selHora.append(new Option("Elige primero la fecha", ""));
+        return;
+      }
+      const d = diaDeFecha(inFecha.value);
+      const r = HOURS[d];
+      if (!r) {
+        ayudaFecha.textContent = "Los domingos estamos cerrados. Elige otro día, por favor.";
+        ayudaFecha.classList.add("error");
+        campo.classList.add("invalido");
+        inFecha.value = "";
+        selHora.disabled = true;
+        selHora.append(new Option("Elige otra fecha", ""));
+        return;
+      }
+      ayudaFecha.textContent = `${DIAS[d]}: ${rangoTexto(r)}`;
+      ayudaFecha.classList.remove("error");
+      campo.classList.remove("invalido");
+
+      // Si es hoy, solo mostrar horarios futuros
+      const { fechaISO, min } = ahoraEnPuebla();
+      const desde = inFecha.value === fechaISO ? Math.max(aMin(r[0]), Math.ceil((min + 30) / 30) * 30) : aMin(r[0]);
+      selHora.append(new Option("Elige un horario", ""));
+      for (let t = desde; t <= aMin(r[1]) - 60; t += 30) {
+        const hhmm = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
+        selHora.append(new Option(formato12(hhmm), formato12(hhmm)));
+      }
+      selHora.disabled = selHora.options.length <= 1;
+      if (selHora.disabled) selHora.options[0].text = "Sin horarios hoy";
+    }
+    inFecha.addEventListener("change", llenarHoras);
+    inFecha.addEventListener("input", llenarHoras);
+
+    // Quita el estado de error al corregir un campo
+    form.addEventListener("input", (e) => {
+      const campo = e.target.closest(".campo");
+      if (campo && e.target !== inFecha && e.target.checkValidity()) campo.classList.remove("invalido");
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let primeroInvalido = null;
+      form.querySelectorAll("[required]").forEach((el) => {
+        const ok = el.checkValidity() && el.value.trim() !== "";
+        el.closest(".campo").classList.toggle("invalido", !ok);
+        if (!ok && !primeroInvalido) primeroInvalido = el;
+      });
+      if (primeroInvalido) { primeroInvalido.focus(); return; }
+
+      const datos = new FormData(form);
+      const fechaBonita = new Date(datos.get("fecha") + "T12:00:00")
+        .toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" });
+      const lineas = [
+        "¡Hola, Studio 43! Me gustaría agendar una cita 💇‍♀️",
+        "",
+        `• Nombre: ${datos.get("nombre").trim()}`,
+        `• Teléfono: ${datos.get("telefono").trim()}`,
+        `• Servicio: ${datos.get("servicio")}`,
+        `• Fecha: ${fechaBonita}`,
+        `• Horario: ${datos.get("hora")}`
+      ];
+      const comentario = datos.get("comentario").trim();
+      if (comentario) lineas.push(`• Comentario: ${comentario}`);
+      lineas.push("", "¿Tienen disponibilidad? ¡Gracias!");
+      window.open(urlWhatsApp(lineas.join("\n")), "_blank", "noopener");
+    });
+
+    /* =========================================================
+       ACORDEÓN DE PREGUNTAS FRECUENTES
+       ========================================================= */
+    document.querySelectorAll(".faq__btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq__item");
+        const abrir = !item.classList.contains("abierto");
+        // Cierra las demás para mantenerlo ordenado
+        document.querySelectorAll(".faq__item.abierto").forEach((otro) => {
+          otro.classList.remove("abierto");
+          otro.querySelector(".faq__btn").setAttribute("aria-expanded", "false");
+        });
+        item.classList.toggle("abierto", abrir);
+        btn.setAttribute("aria-expanded", abrir);
+      });
+    });
+
+    /* =========================================================
+       ANIMACIONES AL HACER SCROLL
+       ========================================================= */
+    const revelables = document.querySelectorAll(".revelar");
+    if (reducirMov || !("IntersectionObserver" in window)) {
+      revelables.forEach((el) => el.classList.add("visible"));
+    } else {
+      const obs = new IntersectionObserver((entradas) => {
+        entradas.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      revelables.forEach((el) => obs.observe(el));
+    }
+
+    /* =========================================================
+       ARRANQUE
+       ========================================================= */
+    actualizarEstado();
+    pintarHorario();
+    fijarFechaMinima();
+    setInterval(() => { actualizarEstado(); pintarHorario(); }, 60000);
+  </script>
+</body>
+</html>
