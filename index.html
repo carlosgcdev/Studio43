@@ -205,6 +205,9 @@
       background: repeating-linear-gradient(115deg, rgba(255, 255, 255, .0) 0 18px, rgba(255, 244, 222, .16) 18px 22px);
       filter: blur(2px);
     }
+    /* Portada con foto real: sin las rayas decorativas */
+    .hero__arco--foto::after { content: none; }
+    .hero__arco img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
     .hero__tarjeta {
       position: absolute; right: 0; bottom: 12%; z-index: 3;
       background: var(--blanco); border-radius: var(--radio); padding: 16px 18px; box-shadow: var(--sombra);
@@ -224,6 +227,7 @@
       background: linear-gradient(200deg, #f3e2c7, #d6b384 45%, #9b7048);
       position: relative; overflow: hidden;
     }
+    .sobre__img img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
     .sobre__cita {
       position: relative; margin: -60px 16px 0 auto; max-width: 300px;
       background: var(--espresso); color: var(--crema); padding: 22px 24px; border-radius: var(--radio);
@@ -327,11 +331,19 @@
     .foto--real::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(46, 33, 26, .55)); pointer-events: none; }
     .foto--alta { grid-row: span 2; }
     .foto--ancha { grid-column: span 2; }
-    .aviso-fotos {
-      display: flex; gap: 12px; align-items: center; margin-top: 18px; padding: 14px 16px;
-      border: 1px dashed var(--arena-osc); border-radius: var(--radio-sm); font-size: .86rem; color: var(--cafe);
+    /* Tarjeta de Instagram al final de la galería */
+    .foto--insta {
+      background: var(--espresso); color: var(--crema); text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      text-align: center; padding: 18px; transition: background var(--trans);
     }
-    .aviso-fotos svg { width: 22px; height: 22px; flex: none; color: var(--miel); }
+    .foto--insta::before { content: none; }
+    .foto--insta:hover { background: var(--cafe); }
+    .foto--insta svg { width: 38px; height: 38px; color: var(--miel-claro); transition: transform var(--trans); }
+    .foto--insta:hover svg { transform: scale(1.1) rotate(-6deg); }
+    .foto--insta__titulo { font-family: var(--serif); font-size: 1.6rem; line-height: 1.1; }
+    .foto--insta__titulo em { color: var(--miel-claro); }
+    .foto--insta__user { font-size: .78rem; letter-spacing: .08em; color: var(--arena); }
 
     /* =========================================================
        OPINIONES
@@ -587,7 +599,7 @@
         </div>
 
         <div class="hero__visual revelar" data-retraso="2" aria-hidden="true">
-          <div class="hero__arco"><!-- Espacio para foto --></div>
+          <div class="hero__arco hero__arco--foto"><img src="img/portada-luces-cenizas.jpg" alt="Cabello con luces cenizas y ondas hecho en Studio 43" width="900" height="1200" fetchpriority="high"></div>
           <div class="hero__tarjeta">
             <span class="estrellas">★★★★★</span>
             <strong>4.7</strong>
@@ -601,7 +613,7 @@
     <section class="seccion seccion--arena" id="nosotras">
       <div class="contenedor sobre__grid">
         <div class="sobre__visual revelar">
-          <div class="sobre__img" role="img" aria-hidden="true"></div>
+          <div class="sobre__img"><img src="img/salon-rubio-contraste.jpg" alt="Estilistas de Studio 43 dando forma a un rubio en el salón" width="900" height="1200" loading="lazy"></div>
           <div class="sobre__cita">
             “Desde el 2015 que conocí a Liz, nadie más volvió a tocarme el cabello.”
             <small>Reseña en Google</small>
@@ -689,22 +701,23 @@
         <div class="encabezado">
           <span class="eyebrow revelar">Galería</span>
           <h2 class="revelar" data-retraso="1">Nuestras <em>creaciones</em></h2>
-          <p class="revelar" data-retraso="2">Rubios, balayage, cambios de look y antes y después de nuestras clientas.</p>
+          <p class="revelar" data-retraso="2">Rubios, balayage, luces y peinados de nuestras clientas.</p>
         </div>
-        <!-- Fotos reales en la carpeta img/. Los espacios con degradado (--g) son temporales: cámbialos por <img> como los de arriba. -->
+        <!-- Fotos reales en la carpeta img/. Para agregar más, copia un <figure class="foto foto--alta foto--real"> y cambia la imagen. -->
         <div class="galeria">
           <figure class="foto foto--alta foto--real revelar"><img src="img/balayage-studio43.jpg" alt="Cabello castaño con luces rubias y ondas, frente al letrero de Studio 43" loading="lazy" width="610" height="810"><figcaption>Luces y ondas</figcaption></figure>
           <figure class="foto foto--alta foto--real revelar" data-retraso="1"><img src="img/rubio-cenizo.jpg" alt="Clienta con rubio cenizo largo y ondulado en el salón" loading="lazy" width="610" height="882"><figcaption>Rubio cenizo</figcaption></figure>
           <figure class="foto foto--alta foto--real revelar" data-retraso="2"><img src="img/castano-iluminado.jpg" alt="Cabello castaño oscuro con reflejos cobrizos y rizos" loading="lazy" width="610" height="810"><figcaption>Castaño iluminado</figcaption></figure>
           <figure class="foto foto--alta foto--real revelar" data-retraso="3"><img src="img/balayage-largo.jpg" alt="Cabello largo castaño con efecto de color miel en las puntas" loading="lazy" width="596" height="604"><figcaption>Efecto de color</figcaption></figure>
-          <figure class="foto revelar" style="--g:linear-gradient(110deg,#5a3f2e,#a87a4c 45%,#ecd2a6)"><!-- Espacio para foto --></figure>
-          <figure class="foto revelar" data-retraso="1" style="--g:linear-gradient(160deg,#ead8c0,#b9906a)"><!-- Espacio para foto --></figure>
-          <figure class="foto revelar" data-retraso="2" style="--g:linear-gradient(130deg,#f4e6d1,#cfae84)"><!-- Espacio para foto --></figure>
-          <figure class="foto revelar" data-retraso="3" style="--g:linear-gradient(150deg,#d8b98e,#7f5a3f)"><!-- Espacio para foto --></figure>
-        </div>
-        <div class="aviso-fotos revelar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
-          <span><strong>Aquí van más fotos.</strong> Los espacios con degradado son temporales; se reemplazan por más trabajos reales del salón.</span>
+          <figure class="foto foto--alta foto--real revelar"><img src="img/balayage-caramelo.jpg" alt="Cabello largo con balayage en tonos caramelo y rubio" loading="lazy" width="900" height="1200"><figcaption>Rubio caramelo</figcaption></figure>
+          <figure class="foto foto--alta foto--real revelar" data-retraso="1"><img src="img/peinado-trenza.jpg" style="object-position: 75% 20%" alt="Clienta sonriente con ondas definidas, trenza y maquillaje" loading="lazy" width="434" height="560"><figcaption>Peinado y maquillaje</figcaption></figure>
+          <figure class="foto foto--alta foto--real revelar" data-retraso="2"><img src="img/rubio-miel.jpg" alt="Clienta con rubio miel largo y luminoso en el salón" loading="lazy" width="960" height="1200"><figcaption>Rubio miel</figcaption></figure>
+          <!-- Tarjeta final: invita a ver más trabajos en Instagram -->
+          <a class="foto foto--alta foto--insta revelar" data-retraso="3" href="https://www.instagram.com/studio43_ld/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+            <span class="foto--insta__titulo">Ve más <em>creaciones</em></span>
+            <span class="foto--insta__user">@studio43_ld</span>
+          </a>
         </div>
       </div>
     </section>
